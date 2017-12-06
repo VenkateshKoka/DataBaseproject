@@ -1,0 +1,79 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">cooK-oka</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse pull-right">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#!/login">Login</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
+
+<!--content starts here-->
+<div class=" content container-fluid">
+    <h1>Register</h1>
+
+    <div ng-show="model.error" class="alert alert-danger">
+        {{model.error}}
+    </div>
+    <form name="form" class="css-form" novalidate>
+        <label for="username">Username</label>
+        <input type="text"
+               id="username"
+               ng-model="username"
+               required=""
+               name="username"
+               class="form-control"
+               placeholder="username"/>
+        <div ng-show="form.$submitted">
+            <div class="inputerror" ng-show="form.username.$error.required">please enter username</div>
+        </div>
+
+        <!--<div ng-show="model.error" class="alert alert-danger">-->
+
+        <label for="password">password</label>
+        <input type="password"
+               id = "password"
+               ng-model="password"
+               required=""
+               name="password"
+               class="form-control"
+               placeholder="password"/>
+        <div ng-show="form.$submitted">
+            <div class="inputerror" ng-show="form.password.$error.required">please enter password</div>
+        </div>
+        <!--<div ng-show="model.error" class="alert alert-danger">-->
+
+        <label for="password2">Re-enter password</label>
+        <input type="password"
+               id="password2"
+               ng-model="password2"
+               required=""
+               name="password2"
+               class="form-control form-control-danger"
+               placeholder="very password"/>
+        <div ng-show="form.$submitted">
+            <div class="inputerror" ng-show="form.password2.$error.required">please Re-enter password</div>
+        </div>
+        <br/>
+        <input type="submit"
+               class="btn btn-primary btn-block"
+               ng-click="model.register(username, password, password2)"
+               value="Register" />
+        <input type="submit"
+               class="btn btn-primary btn-block"
+               ng-click="model.registerAsCritic(username, password, password2)"
+               value="Register As Critic" />
+    </form>
+    <a class="btn btn-danger  btn-block"
+       href="#!/login">Cancel</a>
+</div>
