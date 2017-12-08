@@ -12,34 +12,31 @@
             .when('/', {
                 templateUrl: './main.html',
                 controller: 'mainController',
-                controllerAs: 'model'
-                // resolve :{
-                //     currentUser : checkCurrentUser
-                // }
+                controllerAs: 'model',
+                resolve :{
+                    currentUser : checkCurrentUser
+                }
             })
 
-            .when('/search/:recipename', {
-                templateUrl: './searchRecipeResults.html',
-                controller: 'pocController',
-                controllerAs: 'model',
-                resolve :{
-                    currentUser : checkCurrentUser
-                }
-                // resolve :{
-                //     currentUser : checkCurrentUser
-                // }
-            })
-            .when('/recipe/:recipeId', {
-                templateUrl: './views/recipe/templates/recipeDescription.view.client.html',
-                controller: 'recipeController',
+            .when('/search/:moviename', {
+                templateUrl: './searchMovieResults.html',
+                controller: 'MovieListController',
                 controllerAs: 'model',
                 resolve :{
                     currentUser : checkCurrentUser
                 }
             })
-            .when('/recipe/edit/:recipeId', {
-                templateUrl: './views/recipe/templates/recipeEdit.view.client.html',
-                controller: 'recipeEditController',
+            .when('/movie/:movieId', {
+                templateUrl: './views/movie/templates/movieDescription.view.client.html',
+                controller: 'movieController',
+                controllerAs: 'model',
+                resolve :{
+                    currentUser : checkCurrentUser
+                }
+            })
+            .when('/movie/edit/:movieId', {
+                templateUrl: './views/movie/templates/movieEdit.view.client.html',
+                controller: 'movieEditController',
                 controllerAs: 'model',
                 resolve :{
                     currentUser : checkLoggedIn
@@ -63,33 +60,33 @@
                 controller: 'registerController',
                 controllerAs: 'model'
             })
-            .when('/user/recipelist', {
-                templateUrl: './views/recipe/templates/recipelistFavorite.view.client.html',
-                controller: 'favoriteRecipeController',
+            .when('/user/movielist', {
+                templateUrl: './views/movie/templates/movielistFavorite.view.client.html',
+                controller: 'favoriteMovieController',
                 controllerAs: 'model',
                 resolve :{
                     currentUser : checkLoggedIn
                 }
             })
-            .when('/user/favoriteRecipe/:recipeId', {
-                templateUrl: './views/recipe/templates/recipeFavoriteDescription.view.client.html',
-                controller: 'recipeFavoriteController',
+            .when('/user/favoriteMovie/:movieId', {
+                templateUrl: './views/movie/templates/movieFavoriteDescription.view.client.html',
+                controller: 'movieFavoriteController',
                 controllerAs: 'model',
                 resolve :{
                     currentUser : checkLoggedIn
                 }
             })
-            .when('/cook/recipe', {
-                templateUrl: './views/recipe/templates/createdRecipesList.view.client.html',
-                controller: 'createdRecipeListController',
+            .when('/critic/movie', {
+                templateUrl: './views/movie/templates/createdMoviesList.view.client.html',
+                controller: 'createdMovieListController',
                 controllerAs: 'model',
                 resolve :{
                     currentUser : checkLoggedIn
                 }
             })
-            .when('/cook/recipe/new', {
-                templateUrl: './views/recipe/templates/newRecipe.view.client.html',
-                controller: 'newRecipeController',
+            .when('/critic/movie/new', {
+                templateUrl: './views/movie/templates/newMovie.view.client.html',
+                controller: 'newMovieController',
                 controllerAs: 'model',
                 resolve :{
                     currentUser : checkLoggedIn
@@ -104,9 +101,7 @@
                 }
             })
             .when('/admin', {
-                templateUrl: 'views/admin/templates/admin.view.client.html',
-                // controller: 'profileController',
-                // controllerAs: 'model',
+                templateUrl: 'views/admin/templates/admin-view.client.html',
                 resolve :{
                     currentUser : checkAdmin
                 }
@@ -127,17 +122,17 @@
                     currentUser : checkAdmin
                 }
             })
-            .when('/admin/createdRecipes', {
-                templateUrl: 'views/admin/templates/admin-createdRecipes.view.client.html',
-                controller: 'adminCreatedRecipesController',
+            .when('/admin/createdMovies', {
+                templateUrl: 'views/admin/templates/admin-createdMovies.view.client.html',
+                controller: 'adminCreatedMoviesController',
                 controllerAs: 'model',
                 resolve :{
                     currentUser : checkAdmin
                 }
             })
-            .when('/admin/recipe/edit/:recipeId', {
-                templateUrl: 'views/admin/templates/admin-recipeEdit.view.client.html',
-                controller: 'adminRecipeEditController',
+            .when('/admin/movie/edit/:movieId', {
+                templateUrl: 'views/admin/templates/admin-movieEdit.view.client.html',
+                controller: 'adminMovieEditController',
                 controllerAs: 'model',
                 resolve :{
                     currentUser : checkAdmin
@@ -190,7 +185,6 @@
             .then(function (user) {
                 if(user === '0') {
                     deferred.resolve({});
-                    // $location.url('/login');
                 } else {
                     deferred.resolve(user);
                 }
@@ -198,20 +192,4 @@
 
         return deferred.promise;
     }
-
-    // function pocController($http) {
-    //     var model= this;
-    //     var key = "8515bd4cd542f2ee041606f0bdaaa7b9";
-    //     model.search= search;
-    //     model.name = "test";
-    //
-    //     function search(title) {
-    //         var url = "http://api.brewerydb.com/v2/beers/?key=8515bd4cd542f2ee041606f0bdaaa7b9&styleId=15";
-    //         $http.get(url).then(function (response) {
-    //             console.log(response);
-    //         }).then(function (data) {
-    //             console.log(data);
-    //         });
-    //     }
-    // }
 })();

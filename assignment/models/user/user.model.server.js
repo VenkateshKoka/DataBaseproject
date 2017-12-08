@@ -4,7 +4,7 @@
 var mongoose = require('mongoose');
 var q = require('q');
 var userSchema = require('./user.schema.server');
-var userModel = mongoose.model('DBProjectUserModel', userSchema);
+var userModel = mongoose.model('ProjectUserModel', userSchema);
 
 
 userModel.createUser = createUser;
@@ -12,7 +12,7 @@ userModel.createUserAsCritic = createUserAsCritic;
 userModel.createUserAsAdmin = createUserAsAdmin;
 userModel.findUserById = findUserById;
 userModel.findAllUsers = findAllUsers;
-// userModel.findAllUsersToFollow = findAllUsersToFollow;
+userModel.findAllUsersToFollow = findAllUsersToFollow;
 userModel.findUserByUsername = findUserByUsername;
 userModel.findUserByCredentials = findUserByCredentials;
 userModel.updateUser = updateUser;
@@ -22,6 +22,9 @@ userModel.deleteUser = deleteUser;
 
 // userModel.findUserByGoogleId = findUserByGoogleId;
 // userModel.findUserByFacebookId = findUserByFacebookId;
+
+userModel.addMovieToFavorites = addMovieToFavorites;
+userModel.deleteFavoriteMovie = deleteFavoriteMovie;
 
 userModel.follow = follow;
 userModel.unfollow = unfollow;
@@ -35,14 +38,25 @@ userModel.isFollower = isFollower;
 
 module.exports = userModel;
 
-// function addRecipeToCreated(username,recipeId) {
-//     return userModel.find({username:username})
-//         .then(function (user) {
-//         user.createdRecipes.push(recipeId);
-//         return user.save();
-//     })
-// }
 
+
+
+function deleteFavoriteMovie(userId, movieId) {
+    return userModel
+        .findById(userId)
+        .then(function (user) {
+            var index = user.movies.indexOf(movieId);
+            user.movies.splice(index, 1);
+            return user.save();
+        });
+}
+
+function addMovieToFavorites(userId,movieId) {
+    return userModel.findById(userId).then(function (user) {
+        user.movies.push(movieId);
+        return user.save();
+    })
+}
 
 function findUserByFacebookId(facebookId) {
     return userModel.findOne({'facebook.id': facebookId});
@@ -186,10 +200,10 @@ function findAllUsers() {
     return userModel.find();
 }
 
-// function findAllUsersToFollow(username) {
-//
-//     return userModel.find();
-// }
+function findAllUsersToFollow(username) {
+
+    return userModel.find();
+}
 
 function findUserByUsername(username) {
     return userModel.findOne({username: username});

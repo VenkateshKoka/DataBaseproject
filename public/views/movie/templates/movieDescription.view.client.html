@@ -1,0 +1,129 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">cooK-oka</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse pull-right">
+            <ul class="nav navbar-nav">
+                <li class="active">
+                    <a href="#">Back
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!--content starts here-->
+<div class="content container-fluid">
+    <ul class="list-group" >
+        <li class="list-group-item active">
+            <div class="row">
+                <div class="col-xs-12 ">
+                    {{model.movie.name}}
+                </div>
+            </div>
+
+        </li>
+        {{model.message}}
+        <li class="list-group-item">
+            <div ng-if=" model.currentUser._id">
+                <button class="btn btn-block btn-success search-bar-height"
+                        ng-click = "model.addMovieToFavorites(model.movie,model.currentUserId)">
+                    Add to your favorites
+                </button>
+            </div>
+        </li>
+        <!--ng-show = "model.currentUserId"-->
+        <li class="list-group-item">
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <img class="recipeimage" src="http://image.tmdb.org/t/p/w300/{{model.movie.poster_path}}" />
+                </div>
+            </div>
+        </li>
+        <li class="list-group-item">
+            <div class="row">
+                <div class="col-xs-12">
+                    <strong>
+                        Movie Overview
+                    </strong>
+                </div>
+            </div>
+        </li>
+        <li class="list-group-item">
+            <div  class="row">
+                <div  class="col-xs-12">
+                    <p>{{model.movie.overview}}</p>
+                </div>
+            </div>
+        </li>
+        <li class="list-group-item">
+            <div class="row">
+                <div class="col-xs-12 ">
+                    <strong>Time (minutes) : </strong> {{model.movie.runtime}}
+                </div>
+            </div>
+        </li>
+
+    </ul>
+</div>
+</div>
+
+<div class="container-fluid">
+    <ul class="list-group">
+        <li class="list-group-item active">
+            Comments
+        </li>
+        <li class="list-group-item">
+            <textarea ng-model="model.comment.commentBody"
+                      type="text"
+                      class="form-control"
+                      id="comment"
+                      rows="5"
+                      placeholder="Your comment here..">
+            </textarea>
+        </li>
+        <li class="list-group-item">
+            <a ng-click="model.createComment(model.comment,model.movie.id)" class="btn btn-success btn-block">
+                Submit
+            </a>
+        </li>
+        <li class="list-group-item">
+            {{model.message}}
+        </li>
+        <!--<li><alert>{{model.message}}</alert></li>-->
+    </ul>
+</div>
+
+
+<div class="container-fluid">
+    <ul class="list-group">
+
+        <li  class="list-group-item" ng-repeat="comment in model.comments">
+            <div class="row">
+                <div class="col-xs-11">
+                    <strong>
+                        {{comment.username}}
+                    </strong>
+                    <p>
+                        {{comment.commentBody}}
+                    </p>
+                </div>
+
+                <div class="col-xs-1">
+
+                    <button ng-click="model.deleteComment(comment._id)" ng-show="comment.username == model.currentusername" class="btn-danger">X</button>
+
+                </div>
+            </div>
+
+        </li>
+    </ul>
+</div>

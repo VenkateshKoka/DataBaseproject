@@ -9,14 +9,14 @@
     function mainController($location,$routeParams,userService,currentUser) {
         var model = this;
 
-        model.searchrecipe =  searchrecipe;
+        model.searchmovie =  searchmovie;
 
         model.currentUser = currentUser;
         // model.logout = logout;
 
 
-        function searchrecipe(recipename) {
-            $location.url('/search/'+recipename);
+        function searchmovie(moviename) {
+            $location.url('/search/'+moviename);
         }
 
 

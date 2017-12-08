@@ -1,0 +1,120 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">cooK-oka</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse pull-right">
+            <ul class="nav navbar-nav">
+                <!--<li class="active"><a href="#">Home</a></li>-->
+                <li>
+                    <a class="btn btn-basic btn-block"
+                       ng-click="model.logout()">Logout</a>
+                </li>
+                <li><a href="#!/profile">Profile</a></li>
+
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
+
+<div class=" content container-fluid">
+    <ul class="list-group">
+        <li class="list-group-item">
+            <div class="row">
+                <div class="col-xs-12">
+                    <strong>
+                        {{model.anotheruser.username}}
+                    </strong>
+                </div>
+            </div>
+        </li>
+        <li class="list-group-item">
+            <div class="row">
+                <div class="col-xs-6">
+                    <strong>
+                        FollowedBy
+                    </strong>
+                </div>
+                <div class="col-xs-6">
+                    <strong>
+                        {{model.anotheruser.followedBy}}
+                    </strong>
+                </div>
+            </div>
+        </li>
+        <li class="list-group-item">
+            <div class="row">
+                <div class="col-xs-6">
+                    <strong>
+                        follows
+                    </strong>
+                </div>
+                <div class="col-xs-6">
+                    <strong>
+                        {{model.anotheruser.follows}}
+                    </strong>
+                </div>
+            </div>
+        </li>
+        <li class="list-group-item">
+            <div class="row">
+                <div class="col-xs-6">
+                    <a  ng-if="!(model.anotheruser.followedBy.indexOf(model.currentUser.username) > -1)"
+                        ng-click="model.follow(model.currentUser.username,model.anotheruser.username)"
+                       class="btn btn-primary btn-block">
+                        Follow
+                        <!--ng-show="model.notFollowing"-->
+                    </a>
+                </div>
+                <div class="col-xs-6">
+                    <a ng-if="(model.anotheruser.followedBy.indexOf(model.currentUser.username) > -1)"
+                       ng-click="model.unfollow(model.currentUser.username,model.anotheruser.username)"
+                       class="btn btn-danger btn-block">
+                        UnFollow
+                        <!--ng-show="model.isFollowerIndex"-->
+
+                    </a>
+                </div>
+            </div>
+
+        </li>
+
+    </ul>
+</div>
+
+<div ng-if="(model.anotheruser.followedBy.indexOf(model.currentUser.username) > -1)"
+     class="content container-fluid">
+    <ul class="list-group">
+        <li class="list-group-item">
+           <p>
+               <strong>First Name : </strong>{{model.anotheruser.firstName}}
+           </p>
+        </li>
+        <li class="list-group-item">
+            <p>
+                <strong>Last Name : </strong>{{model.anotheruser.lastName}}
+            </p>
+        </li>
+        <!--<li  class="list-group-item" ng-repeat="recipe in model.recipes">-->
+            <!--<div   class="row">-->
+
+                <!--<div class="col-lg-6 col-sm-6 col-xs-12">-->
+                    <!--<p>-->
+                        <!--<strong>Recipe Name : </strong>{{recipe.name}}-->
+                    <!--</p>-->
+                <!--</div>-->
+                <!--<div class="col-lg-6 col-sm-6 col-xs-12">-->
+                    <!--&lt;!&ndash;{{recipe.cookTime}}&ndash;&gt;-->
+                    <!--<img class="recipeimage" src={{recipe.imageURL}} />-->
+                <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</li>-->
+    </ul>
+</div>

@@ -24,10 +24,51 @@
             loggedin : loggedin,
             updateUser: updateUser,
             deleteUser:deleteUser,
-            unregister : unregister
+            unregister : unregister,
+            findAllUsersToFollow:findAllUsersToFollow,
+            follow:follow,
+            unfollow:unfollow,
+            findFollowUserByUsername:findFollowUserByUsername,
+            isFollower :isFollower
         };
         return api;
 
+        function follow(mainusername,followerusername) {
+            var url = '/api/follow/'+mainusername+'/by/'+followerusername;
+            return $http.post(url).then(function (response) {
+                return response.data;
+            })
+        }
+        function unfollow(mainusername,followerusername) {
+            var url = '/api/unfollow/'+mainusername+'/by/'+followerusername;
+            return $http.post(url).then(function (response) {
+                return response.data;
+            })
+        }
+
+        function findFollowUserByUsername(username) {
+            var url = '/api/follow/username/'+username;
+            return $http.get(url).then(function (response) {
+                return response.data;
+            })
+        }
+
+        function isFollower(mainusername,followerusername) {
+            var url = '/api/isFollower/'+mainusername+'/of/'+followerusername;
+            return $http.get(url).then(function (response) {
+                return response.data;
+            })
+        }
+
+        function findAllUsersToFollow(username) {
+            var url = "/api/follow/user/"+username;
+            return $http
+                .get(url)
+                .then(function (response) {
+                    return response.data;
+                })
+
+        }
 
         function logout() {
             var url = "/api/project/logout";

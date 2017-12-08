@@ -10,6 +10,7 @@ var userSchema = mongoose.Schema({
     lastName: String,
     roles : [{type:String, default:'USER', enum :['USER','ADMIN','CRITIC']}],
     email: String,
+    movies: [{type: mongoose.Schema.Types.ObjectId, ref: "ProjectMovieModel"}],
     follows: [{type:String}],
     followedBy: [{type:String}],
     dateCreated: {type: Date, default: Date.now}

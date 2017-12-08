@@ -1,0 +1,91 @@
+
+<div class="container-fluid">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">cooK-oka</a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse pull-right">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="#!/critic/movie">
+                        Back
+                    </a></li>
+                    <li ><a href="#!/profile">Profile</a></li>
+                    <li>
+                        <a ng-click="model.createNewMovie(movie)">
+                            Create
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+</div>
+
+
+
+<!--content starts here-->
+<div class="content container-fluid">
+    <div class="row">
+        <div class="col-xs-12">
+            <form name="form" class="css-form" novalidate>
+                <label for="name">Name</label>
+                <input class="form-control"
+                       ng-model="movie.name"
+                       placeholder="Movie name"
+                       name="moviename"
+                       id="name"
+                       required=""/>
+                <div ng-show="form.$submitted">
+                    <div class="inputerror"
+                         ng-show="form.moviename.$error.required">Please enter movie name.
+                    </div>
+                </div>
+                <br/>
+                <label for="overview"> overview </label>
+                <textarea class="form-control"
+                          placeholder="overiew description"
+                          ng-model="movie.overview"
+                          name="movieoverview"
+                          required=""
+                          id="overview"></textarea>
+
+                <div ng-show="form.$submitted">
+                    <div class="inputerror"
+                         ng-show="form.movieoverview.$error.required">Please enter overview description
+                    </div>
+                </div>
+                <br/>
+                <label for="runtime">total Time in minutes</label>
+                <input id="runtime"
+                       placeholder="Enter only a number"
+                       ng-model="movie.runtime"
+                       name="runtime"
+                       required=""
+                       class="form-control">
+
+                <div ng-show="form.$submitted">
+                    <div class="inputerror"
+                         ng-show="form.runtime.$error.required">Please enter runtime of movie
+                    </div>
+                </div>
+                <br/>
+                <input class="btn btn-block btn-primary"
+                       type="submit"
+                       ng-click="model.createNewMovie(movie)"
+                       value="create movie" />
+            </form>
+        </div>
+
+    </div>
+</div>
+
+

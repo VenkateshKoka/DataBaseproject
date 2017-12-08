@@ -17,11 +17,11 @@ app.post('/api/project/user', isAdmin,createUser );
 app.get('/api/project/user/:userId', findUserById);
 app.put('/api/project/user/:userId',updateUser);
 app.delete ('/api/project/user/:userId', isAdmin, deleteUser);
-// app.get('/api/follow/user/:username',findAllUsersToFollow);
-// app.post('/api/follow/:mainusername/by/:followerusername',follow);
-// app.post('/api/unfollow/:mainusername/by/:followerusername',unfollow);
-// app.get('/api/follow/username/:username',findFollowUserByUsername);
-// app.get('/api/isFollower/:mainusername/of/:followerusername',isFollower);
+app.get('/api/follow/user/:username',findAllUsersToFollow);
+app.post('/api/follow/:mainusername/by/:followerusername',follow);
+app.post('/api/unfollow/:mainusername/by/:followerusername',unfollow);
+app.get('/api/follow/username/:username',findFollowUserByUsername);
+app.get('/api/isFollower/:mainusername/of/:followerusername',isFollower);
 
 app.post  ('/api/project/login', passport.authenticate('local'), login);
 app.get('/api/project/loggedin',loggedin);
@@ -51,47 +51,47 @@ function localStrategy(username, password, done) {
         );
 }
 
-//
-// function follow(req,res) {
-//     var mainusername = req.params.mainusername;
-//     var followerusername = req.params.followerusername;
-//     userModel
-//         .follow(mainusername,followerusername)
-//         .then(function (user) {
-//             res.json(user);
-//         }, function (error) {
-//             res.sendStatus(500);
-//         });
-// }
-//
-// function unfollow(req,res) {
-//     var mainusername = req.params.mainusername;
-//     var followerusername = req.params.followerusername;
-//     userModel
-//         .unfollow(mainusername,followerusername)
-//         .then(function (user) {
-//             res.json(user);
-//         }, function (error) {
-//             res.sendStatus(500);
-//         });
-// }
-//
-// function isFollower(req,res) {
-//     var mainusername = req.params.mainusername;
-//     var followerusername = req.params.followerusername;
-//     userModel.isFollower(mainusername,followerusername)
-//         .then(function (index) {
-//             if(index != undefined){
-//                 res.send("index");
-//             }
-//             else {
-//                 res.send(undefined);
-//             }
-//
-//         }),function (error) {
-//         res.sendStatus(500);
-//     }
-// }
+
+function follow(req,res) {
+    var mainusername = req.params.mainusername;
+    var followerusername = req.params.followerusername;
+    userModel
+        .follow(mainusername,followerusername)
+        .then(function (user) {
+            res.json(user);
+        }, function (error) {
+            res.sendStatus(500);
+        });
+}
+
+function unfollow(req,res) {
+    var mainusername = req.params.mainusername;
+    var followerusername = req.params.followerusername;
+    userModel
+        .unfollow(mainusername,followerusername)
+        .then(function (user) {
+            res.json(user);
+        }, function (error) {
+            res.sendStatus(500);
+        });
+}
+
+function isFollower(req,res) {
+    var mainusername = req.params.mainusername;
+    var followerusername = req.params.followerusername;
+    userModel.isFollower(mainusername,followerusername)
+        .then(function (index) {
+            if(index != undefined){
+                res.send("index");
+            }
+            else {
+                res.send(undefined);
+            }
+
+        }),function (error) {
+        res.sendStatus(500);
+    }
+}
 
 
 
@@ -244,21 +244,21 @@ function  findUserById(req, res) {
         });
 }
 
-// function findAllUsersToFollow(req,res) {
-//     var username = req.params.username;
-//     userModel
-//         .findAllUsersToFollow(username)
-//         .then(function (users) {
-//             res.send(users);
-//         });
-// }
+function findAllUsersToFollow(req,res) {
+    var username = req.params.username;
+    userModel
+        .findAllUsersToFollow(username)
+        .then(function (users) {
+            res.send(users);
+        });
+}
 
-// function findFollowUserByUsername(req,res) {
-//     var username = req.params.username;
-//     userModel.findFollowUserByUsername(username).then(function (user) {
-//         res.send(user);
-//     })
-// }
+function findFollowUserByUsername(req,res) {
+    var username = req.params.username;
+    userModel.findFollowUserByUsername(username).then(function (user) {
+        res.send(user);
+    })
+}
 
 function findAllUsers (req,res) {
     var username = req.query['username'];
