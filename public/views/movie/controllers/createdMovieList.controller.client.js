@@ -17,7 +17,7 @@
 
         model.editCreatedMovie = editCreatedMovie;
         model.deleteCreatedMovie = deleteCreatedMovie;
-
+        model.goBack = goBack;
 
         function init() {
             movieService.searchCreatedMoviesForUser(username)
@@ -26,6 +26,10 @@
                 })
         }
         init();
+
+        function goBack() {
+            window.history.back();
+        }
 
         function editCreatedMovie(movieId) {
             $location.url('/movie/edit/'+movieId);

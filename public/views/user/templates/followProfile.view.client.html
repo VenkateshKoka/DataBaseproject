@@ -7,7 +7,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">cooK-oka</a>
+            <a class="navbar-brand" href="#">TV-DB</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse pull-right">
             <ul class="nav navbar-nav">
@@ -24,6 +24,7 @@
 </nav>
 
 <div class=" content container-fluid">
+    <button ng-click="model.goBack()" class="buttonBg">Go Back</button>
     <ul class="list-group">
         <li class="list-group-item">
             <div class="row">
@@ -42,9 +43,9 @@
                     </strong>
                 </div>
                 <div class="col-xs-6">
-                    <strong>
-                        {{model.anotheruser.followedBy}}
-                    </strong>
+                    <span ng-repeat="follower in model.anotheruser.followedBy"><strong>
+                        {{follower&nbsp&nbsp}}
+                    </strong></span>
                 </div>
             </div>
         </li>
@@ -56,9 +57,10 @@
                     </strong>
                 </div>
                 <div class="col-xs-6">
+                    <span ng-repeat="follow in model.anotheruser.follows">
                     <strong>
-                        {{model.anotheruser.follows}}
-                    </strong>
+                        {{follow}}<span>&nbsp;&nbsp;</span>
+                    </strong></span>
                 </div>
             </div>
         </li>
@@ -93,12 +95,27 @@
     <ul class="list-group">
         <li class="list-group-item">
            <p>
-               <strong>First Name : </strong>{{model.anotheruser.firstName}}
+               <strong>User Name : </strong>{{model.anotheruser.username}}
            </p>
         </li>
         <li class="list-group-item">
             <p>
+                <strong>First Name : </strong>{{model.anotheruser.firstName}}
+            </p>
+        </li>
+        <li class="list-group-item">
+            <p>
                 <strong>Last Name : </strong>{{model.anotheruser.lastName}}
+            </p>
+        </li>
+        <li class="list-group-item">
+            <p>
+                <strong>Email : </strong>{{model.anotheruser.email}}
+            </p>
+        </li>
+        <li class="list-group-item">
+            <p>
+                <strong>Follows : </strong><span ng-repeat="follow in model.anotheruser.follows">{{follow}} <span>&nbsp;&nbsp;</span></span>
             </p>
         </li>
         <!--<li  class="list-group-item" ng-repeat="recipe in model.recipes">-->

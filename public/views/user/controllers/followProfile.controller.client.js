@@ -14,7 +14,7 @@
             model.logout = logout;
             model.unfollow = unfollow;
             model.renderAnotherUser = renderAnotherUser;
-
+            model.goBack = goBack;
 
 
 
@@ -26,7 +26,9 @@
             }
             init();
 
-
+            function goBack() {
+                window.history.back();
+            }
 
 
             function follow(mainusername,followerusername) {
