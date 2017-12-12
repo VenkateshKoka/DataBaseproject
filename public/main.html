@@ -11,22 +11,19 @@
             <a class="navbar-brand" href="#">TV-DB</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse pull-right">
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="active"><a href="#"><span class="glyphicon glyphicon-home"></span>&nbspHome</a></li>
                 <li>
-                    <a ng-if="model.currentUser.roles.indexOf('ADMIN')>-1" href="#!/admin">Admin</a>
+                    <a ng-if="model.currentUser.roles.indexOf('ADMIN')>-1" href="#!/admin"><span class="glyphicon glyphicon-tower"></span>&nbspAdmin</a>
                 </li>
-                <li ng-show="!model.currentUser._id"><a  href="#!/login">Login</a></li>
-                <li ng-show="!model.currentUser._id"><a  href="#!/register">Register</a></li>
-                <li ng-show="model.currentUser._id"><a  href="#!/profile">Profile</a></li>
-                <!--<li ng-show="model.currentUser._id">-->
-                <!--<a class="btn btn-basic btn-block"-->
-                <!--ng-click="model.logout()">Logout</a>-->
-                <!--</li>-->
+                <li ng-show="!model.currentUser._id"><a  href="#!/login"><span class="glyphicon glyphicon-log-in"></span>&nbspLogin</a></li>
+                <li ng-show="!model.currentUser._id"><a  href="#!/register"><span class="glyphicon glyphicon-user"></span>&nbspRegister</a></li>
+                <li ng-show="model.currentUser._id"><a  href="#!/profile"><span class="glyphicon glyphicon-user"></span>&nbspProfile</a></li>
+
 
 
             </ul>
-        </div><!--/.nav-collapse -->
+        </div>
     </div>
 </nav>
 
@@ -46,13 +43,4 @@
         </div>
     </div>
 </div>
-<!--<footer class="footer">
-    <div class="container">
-        <p class="text-muted">Place sticky footer content here.</p>
-    </div>
-</footer>-->
 
-
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->

@@ -6,6 +6,7 @@ var mongoose = require('mongoose');
 var commentSchema = mongoose.Schema({
     username: {type:String},
     _movie: {type: String},
+    movie: String,
     commentBody: String,
     dateCreated: {type: Date, default: Date.now}
 }, {collection: "database_project_comment"});

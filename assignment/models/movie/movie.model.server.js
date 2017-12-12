@@ -67,12 +67,9 @@ function searchCreatedMoviesForUser(username) {
 function addMovieToFavorites(userId, movie) {
     movie._user = userId;
     movie.movieId = movie.id;
-    movie.name = movie.name;
-    movie.runtime = movie.runtime;
-    movie.vote_average = movie.vote_average;
-    movie.vote_count = movie.vote_count;
-    movie.imageURL = movie.imageURL;
-    movie.overview = movie.overview;
+    var url = "http://image.tmdb.org/t/p/w300/";
+    movie.imageURL = url+movie.poster_path;
+    console.log(url+movie.poster_path);
     return movieModel
         .create(movie)
         .then(function (movie) {

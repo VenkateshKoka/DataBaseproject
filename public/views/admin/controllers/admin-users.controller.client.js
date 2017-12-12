@@ -17,11 +17,16 @@
         model.createUser = createUser;
         model.selectUser = selectUser;
         model.updateUser = updateUser;
+        model.goBack = goBack;
 
         function init() {
             findAllUsers();
         };
         init();
+
+        function goBack() {
+            window.history.back();
+        }
 
         function selectUser(user) {
             console.log(user);

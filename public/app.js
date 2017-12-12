@@ -148,7 +148,7 @@
         userService
             .loggedin()
             .then(function (user) {
-                console.log(user);
+                //console.log(user);
                 if(user === '0') {
                     deferred.reject();
                     $location.url('/login');

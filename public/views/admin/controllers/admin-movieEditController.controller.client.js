@@ -16,6 +16,7 @@
         var movieId = $routeParams['movieId'];
 
         model.updateMovie = updateMovie;
+        model.goBack = goBack;
 
         function init() {
             movieService.searchCreatedMovieById(movieId)
@@ -24,6 +25,9 @@
                 })
         }
         init();
+        function goBack() {
+            window.history.back();
+        }
         function updateMovie(movieId,movie) {
             movieService
                 .updateMovie(movieId,movie)

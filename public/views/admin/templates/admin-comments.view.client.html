@@ -30,6 +30,7 @@
 
 <!--content starts here-->
 <div class="content container-fluid">
+    <button ng-click="model.goBack()" class="buttonBg">Go Back</button>
     <h1>
         Comments
     </h1>
@@ -42,7 +43,10 @@
                         <italic>commented by</italic> <strong>{{comment.username}}</strong>
                     </p>
                     <p class="list-group-item">
-                        {{comment._movie}}
+                        <strong>
+                            Commented time :
+                        </strong>
+                        {{comment.dateCreated | date:'longDate'}}
                     </p>
                     <p class="list-group-item">
                         <strong>

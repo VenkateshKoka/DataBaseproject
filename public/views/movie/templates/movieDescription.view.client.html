@@ -21,6 +21,8 @@
 </nav>
 <!--content starts here-->
 <div class="content container-fluid">
+    <button ng-click="model.goBack()" class="buttonBg">Go Back</button>
+
     <ul class="list-group" >
         <li class="list-group-item active">
             <div class="row">
@@ -39,12 +41,46 @@
                 </button>
             </div>
         </li>
-        <!--ng-show = "model.currentUserId"-->
+        <li class="list-group-item">
+            <div class="row">
+                <div class="col-xs-12 ">
+                    <strong>Title : </strong> {{model.movie.title}}
+                </div>
+            </div>
+        </li>
+        <li class="list-group-item">
+            <div class="row">
+                <div class="col-xs-12 ">
+                    <strong>homepage : </strong> {{model.movie.homepage}}
+                </div>
+            </div>
+        </li>
+        <li class="list-group-item">
+            <div class="row">
+                <div class="col-xs-12 ">
+                    <strong>Release date : </strong> {{model.movie.release_date | date:'longDate'}}
+                </div>
+            </div>
+        </li>
+        <li class="list-group-item">
+            <div class="row">
+                <div class="col-xs-12 ">
+                    <strong>Avg rating : </strong> {{model.movie.vote_average}}
+                </div>
+            </div>
+        </li>
+        <li class="list-group-item">
+            <div class="row">
+                <div class="col-xs-12 ">
+                    <strong>total votes : </strong> {{model.movie.vote_count}}
+                </div>
+            </div>
+        </li>
         <li class="list-group-item">
 
             <div class="row">
                 <div class="col-xs-12">
-                    <img class="recipeimage" src="http://image.tmdb.org/t/p/w300/{{model.movie.poster_path}}" />
+                    <img class="movieimage" src="http://image.tmdb.org/t/p/w300/{{model.movie.poster_path}}" />
                 </div>
             </div>
         </li>
@@ -67,7 +103,7 @@
         <li class="list-group-item">
             <div class="row">
                 <div class="col-xs-12 ">
-                    <strong>Time (minutes) : </strong> {{model.movie.runtime}}
+                    <strong>Run Time (minutes) : </strong> {{model.movie.runtime}}
                 </div>
             </div>
         </li>

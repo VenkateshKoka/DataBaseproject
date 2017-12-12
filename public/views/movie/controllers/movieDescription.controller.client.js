@@ -60,13 +60,14 @@
             movieService
                 .searchMovieById(movieId)
                 .then(function (movie) {
-                    console.log("model movie is "+movie);
+
                     model.movie = movie;
+                    console.log("model movie is "+model.movie);
                 })
         }
 
         function addMovieToFavorites(movie,userId) {
-
+            console.log("this comment in moviedescripController"+movie.poster_path);
             movieService
                 .addMovieToFavorites(movie,userId)
                 .then(function (response) {

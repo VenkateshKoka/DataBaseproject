@@ -8,14 +8,14 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">cooK-oka</a>
+            <a class="navbar-brand" href="#">TV-DB</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse pull-right">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#!/">Home</a></li>
-                <li ng-show="model.currentUser._id"><a href="#!/profile">Profile</a></li>
-                <li ng-show="!model.currentUser._id"><a href="#!/login">Login</a></li>
-                <li ng-show="!model.currentUser._id"><a href="#!/register">Register</a></li>
+                <li class="active"><a href="#!/"><span class="glyphicon glyphicon-home"></span>&nbspHome</a></li>
+                <li ng-show="model.currentUser._id"><a href="#!/profile"><span class="glyphicon glyphicon-user"></span>&nbspProfile</a></li>
+                <li ng-show="!model.currentUser._id"><a href="#!/login"><span class="glyphicon glyphicon-log-in"></span>&nbspLogin</a></li>
+                <li ng-show="!model.currentUser._id"><a href="#!/register"><span class="glyphicon glyphicon-user"></span>&nbspRegister</a></li>
 
             </ul>
         </div><!--/.nav-collapse -->
@@ -24,6 +24,7 @@
 
 
 <div class="content container-fluid">
+    <button ng-click="model.goBack()" class="buttonBg">Go Back</button>
     <div class="row">
         <div class="col-xs-4">
             Poster

@@ -70,6 +70,7 @@
 
         function renderUser(user) {
             model.user = user;
+            console.log(model.user.follows+" console log in profile controller.");
         }
         function userError(){
             model.errorinfo = "User not found";

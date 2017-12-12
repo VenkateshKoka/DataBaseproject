@@ -14,12 +14,16 @@
 
         model.deleteComment = deleteComment;
         model.findAllComments = findAllComments;
+        model.goBack = goBack;
 
         function init() {
             findAllComments();
         }
         init();
 
+        function goBack() {
+            window.history.back();
+        }
 
         function findAllComments() {
             commentService

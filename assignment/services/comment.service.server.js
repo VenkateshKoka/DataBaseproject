@@ -15,9 +15,8 @@ var commentModel = require('../models/comment/comment.model.server');
 function createComment(req,res) {
     var movieId = req.params.movieId;
     var username = req.params.username;
+    //var moviename = req.body.moviename;
     var comment = req.body;
-
-    // console.log(recipeId+username+comment);
 
     commentModel.createComment(comment,movieId,username)
         .then(function (comment) {

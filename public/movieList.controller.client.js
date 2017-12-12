@@ -17,13 +17,18 @@
         model.searchMovie = searchMovie;
         model.searchMovieById = searchMovieById;
         model.findMoviesForUser= findMoviesForUser;
-        //model.name ="koka";
+        model.goBack =goBack;
 
 
         function init() {
             searchMovie(moviename);
         }
         init();
+
+        function goBack() {
+            window.history.back();
+        }
+
 
         function searchMovie(moviename) {
             userServicep

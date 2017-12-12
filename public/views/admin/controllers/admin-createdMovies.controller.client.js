@@ -16,12 +16,15 @@
 
         model.deleteCreatedMovie = deleteCreatedMovie;
         model.updateMovie = updateMovie;
-
+        model.goBack = goBack;
 
         function init() {
             findallCreatedMovies();
         }
         init();
+        function goBack() {
+            window.history.back();
+        }
 
         function findallCreatedMovies() {
             movieService.findallCreatedMovies()

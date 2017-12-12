@@ -21,6 +21,7 @@ function createComment(comment,movieId,username) {
 
     comment._movie = movieId;
     comment.username = username;
+    // comment.movie = moviename;
     comment.commentBody = comment.commentBody;
     return commentModel
         .create(comment);
